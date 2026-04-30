@@ -15,7 +15,7 @@ export const DataView = () =>{
 
         const getData =  ()=>{
 
-        const data =   fetch('http://localhost:5173/visionary-react-flow/data.json').then(async (res)=>{
+        const data =   fetch('/visionary-react-flow/data.json').then(async (res)=>{
             let dataRes = await res.json();
             setData(dataRes)
             console.log(dataRes)

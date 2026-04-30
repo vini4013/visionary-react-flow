@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import TypeIt from 'typeit-react';
 
-export function useAnimatedText() {
+export function useAnimatedText(remountKey) {
   const [instance, setInstance] = useState(null);
   const [text, setText] = useState('');
 
@@ -9,10 +9,10 @@ export function useAnimatedText() {
     if (!instance) return ;
 
     instance.type(text, { instant: true }).flush();
-  }, [text]);
+  }, [text, instance]);
 
-  const el = (
-    <TypeIt options={{ cursor: false }}
+  const el = ( 
+    <TypeIt key={remountKey} options={{ cursor: false }}
       getAfterInit={(i) => {
         setInstance(i);
 

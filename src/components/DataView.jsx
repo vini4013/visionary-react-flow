@@ -57,10 +57,11 @@ export const DataView = () =>{
 
 const AnimatedText = ({text})=>{   
 
-    const [animatedText, setAnimatedText] = useAnimatedText();
+    const [animatedText, setAnimatedText] = useAnimatedText(text);
 
     useEffect(()=>{
         async function generateStream() {
+            if (!text) return;
 
             const { textStream } = await streamText(text);
 
